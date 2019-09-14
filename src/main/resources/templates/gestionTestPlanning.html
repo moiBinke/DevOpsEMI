@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://img.icons8.com/metro/26/000000/under-computer.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>DevOpsEMI-BravoAlpha</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{assets/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="starter-template.css" rel="stylesheet">
+    <!-- mon css COULIBALY -->
+     <link th:href="@{assets/css/main.css}" rel="stylesheet">
+     
+
+  </head>
+
+  <body style="background-color: #0d5b80">
+
+    <nav class="navbar navbar-expand-md navbar-dark  fixed-top" style="background-color: #0d5b80">
+      <a class="navbar-brand" href="#" style="color: black"><b> BravoAlpha</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" th:href="@{index}" style="text-align:solid">Accueil <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{archives}">Archives</a>
+          </li>
+        </ul>
+        
+      </div>
+    </nav>
+
+    <main role="main" class="container" style="margin-top:10%;">
+      <div class=" text-center" style="font-weight:bold;font-family: Verdana;font-size:xx-large;color:">
+        <img src="../assets/images/logo.png" style="height:100%;">DevOpsEMI
+        <div><br></div>
+      </div>
+      <div style="background-color: #e1d1fc">
+      <form th:action="@{plannifierProgramme}" method="post">
+                 <center>
+                       <div class="form-group" style="background-color:green;color: white">
+                        <label for="programme">Plannification d'un programme soumis</label>
+                      </div>
+                </center>
+                <div class="form-group">
+                <select class="mdb-select md-form form-control" required name="idProduitEnChaine">
+                        <option value="" disabled selected>Choisir seulement pour un produit donné</option>
+                <option th:each="produit:${produits}" th:value="${produit.idProoduit}" th:text="${produit.nomProduit}"></option>
+                </select>
+                <select class="mdb-select md-form form-control" required name="idProgrammeEnChaine">
+                        <option value="" disabled selected>Programmes correspondants</option>
+                        <option th:each="programme:${programmesSoumis}" th:value="${programme.idProgramme}" th:text="${programme.nomProgramme}"></option>
+                       
+                </select>
+              </div>
+               <div class="form-group text-center">
+                <select class="mdb-select md-form" name="personneCharge" required>
+                        <option value="" disabled selected>Personne chargée</option>
+						<option th:each="utilisateur:${utilisateurs}" th:value="${utilisateur.nom}" th:text="${utilisateur.nom}"></option>      					
+                </select>
+                 <label for="dateDeTest">Date de test:</label>
+                 <input type="date" name="dateDeTest" id="dateDeTest">
+                 <input type="submit" value="plannifier" style="border-radius: 15px;background-color:green;color: white">
+               </div>
+              </form>
+            </div>
+            <div style="background-color: green;font-size:20px;color: white" class=" col text-center">Planning des test</div>
+      <div class="row">
+        <div class="col" id="ListeDesProgrammes" style="background-color:#ededed;">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class=" table table-bordered table-striped mb-0">
+            <thead>
+            <tr>
+              <th scope="col"></th>
+              <td>Nom du Produit</td>
+              <td>Nom du Programme</td>
+              <td>Date de test</td>
+              <td>Chargé de test</td>
+              <td> suppression</td>
+              </tr>
+          </thead>
+         <tbody>
+            <tr th:each="test:${tests}">
+              <th scope="row">3</th>
+              <td th:text="${test.programme.produitConcerne.nomProduit}"></td>
+              <td th:text="${test.programme.nomProgramme}"></td>
+              <td th:text="${test.date}"></td>
+              <td th:text="${test.chargeTest.nom}"></td>
+              <td>
+                <form class="text-center"><button style=";color:red"> <i class="fa fa-trash"></i>Supprimer</button>
+                </form>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+        </div>
+      </div>
+      <br>
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="monscript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../assets/js/vendor/popper.min.js"></script>
+    <script src="../assets/js/vendor/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="https://img.icons8.com/metro/26/000000/under-computer.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <title>DevOpsEMI-BravoAlpha</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/starter-template/">
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{assets/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="starter-template.css" rel="stylesheet">
+    <!-- mon css COULIBALY -->
+     <link th:href="@{assets/css/main.css}" rel="stylesheet">
+     
+
+  </head>
+
+  <body style="background-color: #0d5b80">
+
+    <nav class="navbar navbar-expand-md navbar-dark  fixed-top" style="background-color: #0d5b80">
+      <a class="navbar-brand" href="#" style="color: black"><b> BravoAlpha</b></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item ">
+            <a class="nav-link" th:href="@{index}" style="text-align:solid">Accueil <span class="sr-only"></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" th:href="@{archives}">Archives</a>
+          </li>
+        </ul>
+        
+      </div>
+    </nav>
+
+    <main role="main" class="container" style="margin-top:10%;">
+      <div class=" text-center" style="font-weight:bold;font-family: Verdana;font-size:xx-large;color:">
+        <img src="../assets/images/logo.png" style="height:100%;">DevOpsEMI
+        <div><br></div>
+      </div>
+      <div style="background-color: #e1d1fc">
+      <form>
+                 <center>
+                       <div class="form-group" style="background-color:green;color: white">
+                        <label for="programme">Restriction du test</label>
+                      </div>
+                </center>
+                <div class="form-group">
+                <select class="mdb-select md-form form-control">
+                        <option value="" disabled selected>Choisir seulement pour un produit donné</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                </select>
+                <select class="mdb-select md-form form-control">
+                        <option value="" disabled selected>Configurations correspondants</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                </select>
+              </div>
+               <div class="form-group text-center">
+                <input type="text"  name="" placeholder="ajouter un test réussi à cette configuration" style="width:40%">
+                <select class="mdb-select md-form">
+                        <option value="" disabled selected>Personne chargée de ce test</option>
+                        <option value="1">Option 1</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                </select>
+                 <input type="submit" value="Ajouter" style="border-radius: 15px;background-color:green;color: white">
+               </div>
+              </form>
+            </div>
+      <div style="background-color: green;font-size:20px;color: white" class=" text-center">
+        Les tests Systèmes</div>
+      <div class="row">
+        
+        <div class="col" id="ListeDesProgrammes" style="background-color:#ededed;">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class=" table table-bordered table-striped mb-0">
+           <thead>
+            <tr>
+             
+              
+            </tr>
+            <tr>
+              <th scope="col"></th>
+              <td>Nom du Produit</td>
+              <td>Nom de la configuration</td>
+              <td>Date d'intégration</td>
+              <td>Compte rendu du test</td>
+              <td>Etat de test</td>
+              <td></td>
+              </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td></td>
+              <td></td>
+              <td></td>
+              <form class="text-center">
+                <td>
+                   <input type="file" id="file-upload" multiple required />
+                  <label for="file-upload"><i class="fa fa-upload"></i> Charger </label>
+                  <div id="file-upload-filename"></div>
+                </td>
+                <td>
+                  <select class="mdb-select md-form">
+                        <option value="1" checked>Non testé</option>
+                        <option value="2">validé</option>
+                        <option value="3">rejeté</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                </select>
+                </td>
+                <td>
+                 <button> <i class="fa fa-edit"></i>Modifier</button>
+                </td>
+              </form>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+             <td></td>
+              <td></td>
+              <td></td>
+              <form class="text-center">
+                <td>
+                   <input type="file" id="file-upload" multiple required />
+                  <label for="file-upload"><i class="fa fa-upload"></i> Charger </label>
+                  <div id="file-upload-filename"></div>
+                </td>
+                <td>
+                  <select class="mdb-select md-form">
+                        <option value="1" checked>Non testé</option>
+                        <option value="2">validé</option>
+                        <option value="3">rejeté</option>
+                        <option value="2">Option 2</option>
+                        <option value="3">Option 3</option>
+                </select>
+                </td>
+                <td>
+                 <button> <i class="fa fa-edit"></i>Modifier</button>
+                </td>
+              </form>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+        </div>
+      </div>
+      <br>
+    </main><!-- /.container -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="../assets/js/vendor/monscript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../assets/js/vendor/popper.min.js"></script>
+    <script src="../assets/js/vendor/bootstrap.min.js"></script>
+  </body>
+</html>
